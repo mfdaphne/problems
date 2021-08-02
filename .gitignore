@@ -3,6 +3,7 @@
 .classpath
 .gitattributes
 .project
+.settings
 
 # Log file
 *.log
