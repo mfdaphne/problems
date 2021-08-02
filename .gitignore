@@ -1,5 +1,8 @@
 # Compiled class file
 *.class
+.classpath
+.gitattributes
+.project
 
 # Log file
 *.log
