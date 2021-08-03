@@ -1,21 +1,40 @@
+
 plugins {
     id 'java-library'
+    id 'org.springframework.boot' version '2.4.3'
+}
+
+ext {
+	spring_fox_version = '3.0.0'
+	spring_boot_version = '2.4.3'
+	lombok_version = '1.18.20'
 }
 
 repositories {
     mavenCentral()
 }
 
+
 dependencies {
-   	implementation 'org.springframework.boot:spring-boot-starter-web:2.5.3'
-   	compileOnly 'org.projectlombok:lombok:1.18.20'
-	annotationProcessor 'org.projectlombok:lombok:1.18.20'
+   	implementation 'org.springframework.boot:spring-boot-starter-web:'+spring_boot_version
+   	compileOnly 'org.projectlombok:lombok:'+lombok_version
+	annotationProcessor 'org.projectlombok:lombok:'+lombok_version
 	
-	implementation 'io.springfox:springfox-boot-starter:3.0.0'
-	implementation 'io.springfox:springfox-swagger-ui:3.0.0'
+	implementation 'io.springfox:springfox-boot-starter:'+spring_fox_version
+	implementation 'io.springfox:springfox-swagger-ui:'+spring_fox_version
 	
-	testCompileOnly 'org.projectlombok:lombok:1.18.20'
-	testAnnotationProcessor 'org.projectlombok:lombok:1.18.20'
+	testCompileOnly 'org.projectlombok:lombok:'+lombok_version
+	testAnnotationProcessor 'org.projectlombok:lombok:'+lombok_version
    
 
+}
+
+bootRun {
+    main = 'com.priority.StorehouseServerStarter'
+}
+
+task myTask {
+	doLast {
+		println 'Perform at the end'
+	}
 }
