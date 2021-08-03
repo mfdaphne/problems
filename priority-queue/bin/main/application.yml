@@ -1,8 +1,0 @@
-server:
-   port: 8082
-
-spring.config.activate.on-profile : default
-
-logging.level.root : WARN
-
-#http://localhost:8082/swagger-ui/
