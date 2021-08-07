@@ -3,6 +3,6 @@ server:
 
 spring.config.activate.on-profile : default
 
-logging.level.root : WARN
+logging.level.root : INFO
 
 #http://localhost:8082/swagger-ui/

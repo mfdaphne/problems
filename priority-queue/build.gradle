@@ -2,6 +2,7 @@
 plugins {
     id 'java-library'
     id 'org.springframework.boot' version '2.4.3'
+    id 'io.spring.dependency-management' version '1.0.10.RELEASE'
 }
 
 ext {
@@ -14,9 +15,39 @@ repositories {
     mavenCentral()
 }
 
+sourceSets {
+    integrationTest {
+        java {
+            compileClasspath += main.output + test.output
+            runtimeClasspath += main.output + test.output
+            srcDir file('src/integration-test/java')
+        }
+        resources.srcDir file('src/integration-test/resources')
+    }
+}
+
+task integrationTest(type: Test) {
+    description = 'Runs Integration tests.'
+    
+    testClassesDirs = sourceSets.integrationTest.output.classesDirs
+    classpath = sourceSets.integrationTest.runtimeClasspath
+    
+    useJUnitPlatform()
+    
+}
+
+test {
+    useJUnitPlatform()
+}
+
+configurations {
+    integrationTestImplementation.extendsFrom testImplementation
+    integrationTestRuntimeOnly.extendsFrom testRuntimeOnly
+}
 
 dependencies {
    	implementation 'org.springframework.boot:spring-boot-starter-web:'+spring_boot_version
+   	implementation 'org.springframework.boot:spring-boot-starter-validation:'+spring_boot_version
    	compileOnly 'org.projectlombok:lombok:'+lombok_version
 	annotationProcessor 'org.projectlombok:lombok:'+lombok_version
 	
@@ -25,8 +56,10 @@ dependencies {
 	
 	testCompileOnly 'org.projectlombok:lombok:'+lombok_version
 	testAnnotationProcessor 'org.projectlombok:lombok:'+lombok_version
-   
-
+	
+	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
 }
 
 bootRun {
