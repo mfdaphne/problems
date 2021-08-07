@@ -4,12 +4,12 @@ Joe works in a storehouse of a rubber duck lender. He is responsible for bringin
 </br>
 
 <h2>Problem Statement</h2>
-Joe explains to you that he got a bunch of requirements for the priority queue and the web service. The constraints he was given are:
-• The service should implement a RESTful service
-• All orders will be placed in a single queue
-• Each order is comprised by the ID of the client and the requested quantity
-• A client can only place one order and existing orders cannot be modified
-• Client ID’s are in the range of 1 to 20000
-• Orders are sorted by the number of seconds they are in the queue
+Joe explains to you that he got a bunch of requirements for the priority queue and the web service. The constraints he was given are: <br>
+<li> The service should implement a RESTful service
+<li> All orders will be placed in a single queue
+<li> Each order is comprised by the ID of the client and the requested quantity
+<li> A client can only place one order and existing orders cannot be modified
+<li> Client ID’s are in the range of 1 to 20000
+<li> Orders are sorted by the number of seconds they are in the queue
 
 Joe is supposed to look at the queue every 5 minutes and bring as many orders to the front desk as possible. His cart is able to carry 25 rubber ducks and he should put as many orders into his cart without skipping, changing or splitting any orders.
