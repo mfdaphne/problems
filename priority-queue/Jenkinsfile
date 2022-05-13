@@ -18,6 +18,15 @@ pipeline {
             }
         }
         
+         stage('Test') {
+            steps {
+                dir('./priority-queue') {
+                sh 'gradle test'
+                echo 'Testing successful'
+                 }
+            }
+        }
+        
          stage('Build') {
             steps {
                 dir('./priority-queue') {
@@ -27,13 +36,6 @@ pipeline {
             }
         }
         
-        stage('Test') {
-            steps {
-                dir('./priority-queue') {
-                sh 'gradle test'
-                echo 'Testing successful'
-                 }
-            }
-        }
+       
     }
 }
