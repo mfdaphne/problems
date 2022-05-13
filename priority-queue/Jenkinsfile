@@ -12,16 +12,15 @@ pipeline {
         stage('Clean') {
             steps {
                 dir('./priority-queue') {
-    sh 'gradle clean'
+                sh 'gradle clean'
                 echo 'Cleaning successful'
-            }
-                
+                   }
             }
         }
         
          stage('Build') {
             steps {
-                 dir('./priority-queue') {
+                dir('./priority-queue') {
                 sh 'gradle build'
                 echo 'Building successful'
                  }
@@ -30,7 +29,7 @@ pipeline {
         
         stage('Test') {
             steps {
-                 dir('./priority-queue') {
+                dir('./priority-queue') {
                 sh 'gradle test'
                 echo 'Testing successful'
                  }
